@@ -1,7 +1,7 @@
 {
   "name": "ox-store-backend",
   "version": "1.0.0",
-  "description": "Backend for OX Store with Discord Auth and PostgreSQL",
+  "description": "Backend for OX Store with Discord Auth and SQLite",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -13,7 +13,6 @@
     "dotenv": "^17.2.3",
     "express": "^4.18.2",
     "multer": "^2.0.2",
-    "sqlite3": "^5.1.7",
-        "pg": "^8.11.3"
+    "sqlite3": "^5.1.7"
   }
 }
