@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { Pool } = require('pg');
+const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
@@ -69,35 +69,28 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// Database Setup - PostgreSQL
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+// Database Setup
+const dbPath = path.join(__dirname, 'ox_database.db');
+console.log('Attempting to open database at:', dbPath);
 
-pool.connect((err, client, release) => {
+const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
     if (err) {
-        console.error('CRITICAL: Error connecting to PostgreSQL', err.message);
+        console.error('CRITICAL: Error opening database', err.message);
     } else {
-        console.log('Connected to PostgreSQL database successfully.');
-        release();
+        console.log('Connected to the SQLite database successfully.');
         initDatabase();
     }
 });
 
 function initDatabase() {
-    pool.query(`CREATE TABLE IF NOT EXISTS users (
+    db.run(`CREATE TABLE IF NOT EXISTS users (
         discord_id TEXT PRIMARY KEY,
         username TEXT,
         email TEXT,
         balance REAL DEFAULT 0.00,
         avatar TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )`, (err) => {
-        if (err) console.error('Error creating users table:', err.message);
-    });
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )`);
 
     db.run(`CREATE TABLE IF NOT EXISTS orders (
         id TEXT PRIMARY KEY,
