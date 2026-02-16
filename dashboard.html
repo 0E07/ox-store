@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - OX STORE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="user-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --db-bg: #000000;
+            --db-card-bg: #0a0a0a;
+            --db-card-hover: #111111;
+            --db-border: rgba(255, 255, 255, 0.05);
+            --db-text-main: #ffffff;
+            --db-text-muted: #a0a0a0;
+            --accent-red: #dc2626;
+            --db-accent-green: #10b981;
+            --db-accent-blue: #3b82f6;
+        }
+
+        body {
+            background: var(--db-bg);
+            color: var(--db-text-main);
+            font-family: 'Cairo', 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        /* Top Navigation - Aligned to Right */
+        .db-nav {
+            background: #000000;
+            height: 70px;
+            border-bottom: 1px solid var(--db-border);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            /* Align items to the right */
+            padding: 0 40px;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-item {
+            color: var(--db-text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            padding: 10px 18px;
+            border-radius: 12px;
+        }
+
+        .nav-item:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item.active {
+            color: white;
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        /* Container */
+        .db-container {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 40px;
+        }
+
+        /* Greeting - Right Aligned */
+        .greeting-section {
+            text-align: right;
+            margin-bottom: 40px;
+        }
+
+        .greeting-section h1 {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .greeting-section p {
+            color: var(--db-text-muted);
+            font-size: 16px;
+        }
+
+        /* Dashboard Grid (Mirroring User Image: Balance Left, Stats Right) */
+        .db-grid {
+            display: grid;
+            grid-template-columns: 1fr 280px 280px;
+            /* Balance is wide, others narrow */
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .db-card {
+            background: var(--db-card-bg);
+            border: 1px solid var(--db-border);
+            border-radius: 20px;
+            padding: 28px;
+            position: relative;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .db-card:hover {
+            background: var(--db-card-hover);
+            transform: translateY(-5px);
+            border-color: rgba(220, 38, 38, 0.2);
+        }
+
+        .card-icon-float {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            /* Icon on the left for RTL cards */
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--db-border);
+            border-radius: 14px;
+            color: var(--accent-red);
+        }
+
+        .card-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .card-subtitle {
+            color: var(--db-text-muted);
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .card-number {
+            font-size: 44px;
+            font-weight: 800;
+            color: white;
+        }
+
+        /* Balance Card Styling (Matches Image) */
+        .balance-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 35px;
+        }
+
+        .balance-info-left {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border-left: 1px solid var(--db-border);
+            padding-left: 20px;
+        }
+
+        .balance-main-right {
+            text-align: right;
+            flex-grow: 1;
+        }
+
+        .bal-detail-item {
+            margin-bottom: 15px;
+        }
+
+        .bal-detail-item .label {
+            color: var(--db-text-muted);
+            font-size: 12px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .bal-detail-item .value {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .bal-detail-item .value.active {
+            color: var(--db-accent-blue);
+        }
+
+        /* Recent Orders Layout */
+        .recent-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .recent-title-group {
+            text-align: right;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-action {
+            background: var(--db-card-bg);
+            border: 1px solid var(--db-border);
+            padding: 10px 20px;
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-action:hover {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+            transform: scale(1.05);
+        }
+
+        /* Table RTL Styling */
+        .table-wrapper {
+            background: var(--db-card-bg);
+            border: 1px solid var(--db-border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 22px 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--db-border);
+            color: var(--db-text-muted);
+            font-size: 13px;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        td {
+            padding: 22px 30px;
+            border-bottom: 1px solid var(--db-border);
+            vertical-align: middle;
+        }
+
+        .order-id-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: flex-end;
+            /* Keep ID on the right of the cell */
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: inline-block;
+        }
+
+        .status-completed {
+            color: var(--db-accent-green);
+        }
+
+        .status-pending {
+            color: #f59e0b;
+        }
+
+        .btn-view {
+            color: var(--db-accent-blue);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 1100px) {
+            .db-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .balance-card {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .db-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .balance-card {
+                grid-column: span 1;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .balance-info-left {
+                border-left: none;
+                border-top: 1px solid var(--db-border);
+                padding-top: 20px;
+                margin-top: 20px;
+            }
+
+            .db-nav {
+                padding: 0 20px;
+                height: 60px;
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+
+            .db-container {
+                padding: 0 20px;
+            }
+        }
+
+        /* Order Details Modal */
+        .order-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .order-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--db-card-bg);
+            border: 1px solid var(--db-border);
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            border-radius: 24px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            text-align: right;
+        }
+
+        .order-modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: var(--db-text-muted);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .modal-close:hover {
+            color: white;
+        }
+
+        .detail-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--db-border);
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: var(--db-accent-green);
+            font-size: 14px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .modal-tag {
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--accent-red);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="db-nav">
+        <a href="index.html" class="nav-item">
+            <span>الرئيسية</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            </svg>
+        </a>
+        <a href="#" class="nav-item active">
+            <span>لوحة التحكم</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+        </a>
+        <a href="https://discord.gg/w6XyUV5hDr" target="_blank" class="nav-item">
+            <span>الدعم الفني</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            </svg>
+        </a>
+    </nav>
+
+    <div class="db-container">
+        <div class="greeting-section">
+            <h1 id="userGreeting">صباح الخير، ...</h1>
+            <p>إليك ملخص لنشاط حسابك وآخر العمليات.</p>
+        </div>
+
+        <div class="db-grid">
+            <!-- Balance Card -->
+            <div class="db-card balance-card">
+                <div class="balance-info-left">
+                    <div class="bal-detail-item">
+                        <span class="label">حالة الحساب</span>
+                        <span class="value active" id="accountStatus">Active</span>
+                    </div>
+                    <div class="bal-detail-item">
+                        <span class="label">نوع الحساب</span>
+                        <span class="value" id="accountType">Premium</span>
+                    </div>
+                    <div class="bal-detail-item" style="margin-bottom: 0;">
+                        <span class="label">طلبات مدفوعة</span>
+                        <span class="value" id="paidOrdersCount">0</span>
+                    </div>
+                </div>
+                <div class="balance-main-right">
+                    <div class="card-title">الرصيد الكلي</div>
+                    <div class="card-subtitle">رصيدك الحالي وتاريخ المعاملات</div>
+                    <div class="card-number" id="balanceAmount">$0.00</div>
+                    <div style="color: var(--db-text-muted); font-size: 13px; margin-top: 10px;">Current Balance</div>
+                </div>
+                <div class="card-icon-float">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Total Reviews -->
+            <div class="db-card">
+                <div class="card-title">إجمالي التقييمات</div>
+                <div class="card-subtitle">التقييمات التي قمت بإضافتها</div>
+                <div class="card-number" id="totalReviewsCount">0</div>
+                <div class="card-icon-float">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Total Orders -->
+            <div class="db-card">
+                <div class="card-title">إجمالي الطلبات</div>
+                <div class="card-subtitle">جميع الطلبات منذ إنشاء الحساب</div>
+                <div class="card-number" id="totalOrdersCount">0</div>
+                <div class="card-icon-float">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="recent-header-row">
+            <div class="action-row">
+                <div class="btn-action" style="padding: 10px; width: 44px; justify-content: center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+            </div>
+            <div class="recent-title-group">
+                <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 5px;">الطلبات الأخيرة</h2>
+                <p style="color: var(--db-text-muted); font-size: 14px;">آخر 5 عمليات شرائية قمت بها</p>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">الإجراء</th>
+                        <th style="width: 25%;">الحالة</th>
+                        <th style="width: 20%;">المبلغ</th>
+                        <th style="width: 20%;">التاريخ</th>
+                        <th style="width: 20%;">الطلب</th>
+                    </tr>
+                </thead>
+                <tbody id="recentOrdersBody">
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--db-text-muted); padding: 50px;">جاري
+                            تحميل بيانات الطلبات...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="order-modal" id="orderDetailModal">
+        <div class="modal-overlay" onclick="closeOrderModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeOrderModal()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-tag">تفاصيل المنتج</div>
+            <h2 id="modalProductTitle" style="margin-bottom: 5px; font-size: 24px;">اسم المنتج</h2>
+            <p id="modalOrderDate" style="color: var(--db-text-muted); font-size: 14px; margin-bottom: 25px;">التاريخ:
+                2026-02-05</p>
+
+            <div style="font-weight: 700; margin-bottom: 10px;">بيانات المنتج / الكود:</div>
+            <div class="detail-box" id="modalOrderDetails">جاري تحميل البيانات...</div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px;">
+                <button class="btn-action" style="justify-content: center; background: #22c55e;"
+                    onclick="downloadOrderDetails()">
+                    تحميل كملف 📥
+                </button>
+                <button class="btn-action" style="justify-content: center; background: var(--accent-red);"
+                    onclick="copyOrderDetails()">
+                    نسخ البيانات 📋
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="discord-auth.js"></script>
+    <script>
+        let currentPurchases = [];
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const user = getStoredUser();
+            if (!user) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Update Header
+            const greetingEl = document.getElementById('userGreeting');
+            const now = new Date();
+            const hours = now.getHours();
+            let greetingTxt = "صباح الخير";
+            if (hours >= 12 && hours < 17) greetingTxt = "مساء الخير";
+            else if (hours >= 17 || hours < 5) greetingTxt = "مساء الخير";
+            greetingEl.textContent = `${greetingTxt}، ${user.username}`;
+
+            // Fetch Stats
+            try {
+                const res = await fetch(`/api/user/stats/${user.id}`);
+                if (res.ok) {
+                    const stats = await res.json();
+                    document.getElementById('totalOrdersCount').textContent = stats.total_orders;
+                    document.getElementById('paidOrdersCount').textContent = stats.total_orders;
+                    document.getElementById('balanceAmount').textContent = `$${stats.balance.toFixed(2)}`;
+                    document.getElementById('totalReviewsCount').textContent = stats.total_reviews || 0;
+                    document.getElementById('accountStatus').textContent = stats.status;
+                }
+            } catch (err) { console.error(err); }
+
+            // Fetch Orders
+            try {
+                const res = await fetch(`/api/user/purchases/${user.id}`);
+                if (res.ok) {
+                    currentPurchases = await res.json();
+                    renderOrders(currentPurchases);
+                }
+            } catch (err) { console.error(err); }
+        });
+
+        function renderOrders(purchases) {
+            const body = document.getElementById('recentOrdersBody');
+            if (!purchases || purchases.length === 0) {
+                body.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--db-text-muted); padding: 50px;">لا توجد طلبات سابقة</td></tr>';
+                return;
+            }
+
+            body.innerHTML = purchases.map((p, idx) => {
+                const date = new Date(p.created_at);
+                const dateStr = date.toLocaleDateString('ar-LY', { day: '2-digit', month: '2-digit', year: 'numeric' });
+                const timeStr = date.toLocaleTimeString('ar-LY', { hour: '2-digit', minute: '2-digit' });
+                const isDelivered = p.status === 'COMPLETED' || p.status === 'DELIVERED';
+                const statusColor = isDelivered ? 'var(--db-accent-green)' : 'var(--db-text-muted)';
+
+                return `
+          <tr>
+            <td>
+              <a href="javascript:void(0)" class="btn-view" onclick="viewOrderDetails(${idx})">عرض</a>
+            </td>
+            <td>
+              <div class="status-completed" style="color: ${statusColor}; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <span class="status-indicator" style="background: ${statusColor}; border: 2px solid rgba(255,255,255,0.1);"></span>
+                ${p.status}
+              </div>
+            </td>
+            <td>
+              <div style="font-weight: 800; font-size: 16px;">$${parseFloat(p.price).toFixed(2)}</div>
+            </td>
+            <td>
+              <div style="font-weight: 600;">${dateStr}</div>
+              <div style="color: var(--db-text-muted); font-size: 12px;">${timeStr}</div>
+            </td>
+            <td>
+              <div class="order-id-group">
+                <div style="text-align: left;">
+                  <span style="font-weight: 700; color: white; display: block; font-family: monospace;">${p.id}</span>
+                  <span style="color: var(--db-text-muted); font-size: 11px;">رقم الطلب</span>
+                </div>
+                <div style="width: 34px; height: 34px; border-radius: 50%; background: ${isDelivered ? 'rgba(16, 185, 129, 0.1)' : 'rgba(255,255,255,0.05)'}; display: flex; align-items: center; justify-content: center; color: ${statusColor};">
+                  ${isDelivered ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>' : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'}
+                </div>
+              </div>
+            </td>
+          </tr>
+        `;
+            }).join('');
+        }
+
+        function viewOrderDetails(idx) {
+            const order = currentPurchases[idx];
+            if (!order) return;
+
+            document.getElementById('modalProductTitle').textContent = order.product_title || 'منتج غير معروف';
+            const date = new Date(order.created_at);
+            document.getElementById('modalOrderDate').textContent = `تاريخ الطلب: ${date.toLocaleString('ar-LY')}`;
+            document.getElementById('modalOrderDetails').textContent = order.order_details || 'لا توجد بيانات متاحة حالياً.';
+
+            document.getElementById('orderDetailModal').classList.add('active');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderDetailModal').classList.remove('active');
+        }
+
+        function copyOrderDetails() {
+            const content = document.getElementById('modalOrderDetails').textContent;
+            navigator.clipboard.writeText(content).then(() => {
+                const btn = event.currentTarget;
+                const originalText = btn.textContent;
+                btn.textContent = 'تم النسخ ✅';
+                setTimeout(() => btn.textContent = originalText, 2000);
+            });
+        }
+
+        function downloadOrderDetails() {
+            const content = document.getElementById('modalOrderDetails').textContent;
+            const title = document.getElementById('modalProductTitle').textContent;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Product-${title}-${new Date().getTime()}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+
+</html>
