@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OX STORE - Your #1 Choice for Accounts & Apps!</title>
+  <meta name="description" content="Premium gaming accounts and cheats for FiveM, CS2, Fortnite and more">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="user-styles.css">
+  <link rel="stylesheet" href="checkout.css">
+  <link rel="stylesheet" href="quantity.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Luckiest+Guy&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container" style="max-width: 100%; padding: 0 40px;">
+      <div class="nav-content">
+        <div class="nav-right" style="display: flex; align-items: center; gap: 40px;">
+          <div class="logo">
+            <div class="logo-icon">
+              <img src="new-logo.png" alt="OX Logo" class="logo-img">
+            </div>
+            <span class="logo-text ox-special-brand">OX STORE</span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="#home" class="active">الرئيسية</a></li>
+            <li><a href="#products">المنتجات</a></li>
+            <li><a href="#about" class="about-trigger">من نحن</a></li>
+            <li><a href="#tutorial" class="tutorial-trigger">شرح الموقع</a></li>
+            <li><a href="#contact" class="contact-trigger">تواصل معنا</a></li>
+            <li><a href="#" class="add-funds-trigger" style="color: var(--accent-red); font-weight: bold;">اضافة
+                اموال</a>
+            </li>
+            <li class="currency-item">
+              <div class="currency-selector">
+                <div class="currency-display"
+                  style="display: flex; align-items: center; gap: 5px; color: var(--text-main); font-weight: 600; background: rgba(var(--text-main-rgb), 0.05); padding: 8px 15px; border-radius: 10px; border: 1px solid var(--border-color);">
+                  <span class="currency-icon">💲</span>
+                  <span class="currency-current">USD</span>
+                  <span class="account-balance"
+                    style="margin-right: 5px; color: var(--accent-red); font-weight: bold;">(0.00)</span>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="nav-left" style="display: flex; align-items: center; gap: 15px;">
+          <!-- Cart Button -->
+          <button class="cart-btn" id="cartBtn" aria-label="Shopping Cart">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+
+
+          <div class="inbox-wrapper">
+            <button class="inbox-btn" id="inboxBtn" aria-label="Notifications" style="display: none;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notification-badge" id="inboxBadge">0</span>
+            </button>
+
+            <div class="inbox-dropdown" id="inboxDropdown">
+              <div class="inbox-dropdown-header">
+                <h3>البريد الوارد</h3>
+                <button id="clearInboxBtn">مسح الكل</button>
+              </div>
+              <div class="inbox-dropdown-body" id="inboxContent">
+                <div class="no-notifications">لا توجد إشعارات حالياً</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-buttons">
+            <!-- Buttons injected by JS (discord-auth.js) -->
+          </div>
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="gradient-text ox-special-brand animate-ox">OX Store</span>
+        </h1>
+        <p class="hero-subtitle">Your #1 Choice for Accounts & Apps</p>
+        <p class="hero-description">احصل على أفضل الحسابات والأدوات للألعاب الشهيرة بأسعار تنافسية وجودة عالية</p>
+        <div class="hero-buttons">
+          <a href="#products" class="btn-large btn-primary" style="text-decoration: none;">
+            <span>تسوق الآن</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="https://discord.gg/w6XyUV5hDr" target="_blank" class="btn-large btn-discord"
+            style="text-decoration: none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
+            </svg>
+            <span>انضم للديسكورد</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-container">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <div class="stat-number" data-target="20">0</div>
+            <div class="stat-label">منتج متاح</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="stat-number" data-target="700">0</div>
+            <div class="stat-label">عميل سعيد</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+              </svg>
+            </div>
+            <div class="stat-number" data-target="4.9">0</div>
+            <div class="stat-label">تقييم 5/5</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 9.5V4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v5.5"></path>
+                <path d="M2 20h20"></path>
+                <path d="M13.5 13a2.5 2.5 0 0 1 5 0"></path>
+                <rect x="2" y="14" width="20" height="6" rx="2"></rect>
+              </svg>
+            </div>
+            <div class="stat-number" data-target="24">0</div>
+            <div class="stat-label">دعم 24/7</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrolling Banner -->
+  <!-- Scrolling Banner -->
+  <div class="scrolling-banner">
+    <div class="banner-track">
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.5-3.3a9 9 0 0 0 2.5 2.8z">
+            </path>
+          </svg>
+        </div>
+        <span>عروض حصرية</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 3h12l4 6-10 13L2 9z"></path>
+          </svg>
+        </div>
+        <span>جودة عالية</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <span>تسليم فوري</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <span>ضمان موثوق</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>
+        </div>
+        <span>أداء مستقر</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </div>
+        <span>دعم فني 24/7</span>
+      </div>
+
+      <!-- Duplicated for seamless loop (Partial) -->
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.5-3.3a9 9 0 0 0 2.5 2.8z">
+            </path>
+          </svg>
+        </div>
+        <span>عروض حصرية</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 3h12l4 6-10 13L2 9z"></path>
+          </svg>
+        </div>
+        <span>جودة عالية</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <span>تسليم فوري</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <span>ضمان موثوق</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>
+        </div>
+        <span>أداء مستقر</span>
+      </div>
+      <div class="banner-item">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </div>
+        <span>دعم فني 24/7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Section -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="gradient-text">المنتجات المتوفره</span>
+        </h2>
+        <p class="section-subtitle">اختر من بين مجموعة واسعة من المنتجات عالية الجودة</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <div class="search-wrapper">
+          <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+          <div class="search-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="category-filter">
+        <button class="filter-btn active" data-filter="all">الــكل</button>
+        <button class="filter-btn" data-filter="fivem">فــايف ام</button>
+        <button class="filter-btn" data-filter="discord">دســكورد</button>
+        <button class="filter-btn" data-filter="programming">بـرمجـة</button>
+        <button class="filter-btn" data-filter="accounts">حسـابات</button>
+        <button class="filter-btn" data-filter="other">أخــرى</button>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Products will be loaded dynamically via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+          </div>
+          <h3>تسليم فوري</h3>
+          <p>احصل على منتجك فوراً بعد الشراء</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="M9 12l2 2 4-4"></path>
+            </svg>
+          </div>
+          <h3>ضمان شامل</h3>
+          <p>نضمن لك جودة المنتج أو استرداد المال</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+              </path>
+            </svg>
+          </div>
+          <h3>دعم 24/7</h3>
+          <p>فريق الدعم متاح على مدار الساعة</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3>دفع آمن</h3>
+          <p>معاملات مشفرة وآمنة 100%</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <div class="logo-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <span class="logo-text ox-special-brand">OX STORE</span>
+          </div>
+          <p class="footer-description">متجرك الموثوق للحسابات والأدوات الاحترافية</p>
+          <div class="social-links">
+            <a href="https://discord.gg/CqzwFyBZt3" target="_blank" rel="noopener noreferrer"
+              class="social-link-3d discord">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link-3d twitter">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link-3d telegram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.42-.75-.22-1.349-.33-1.296-.707.027-.198.324-.4.89-.57 3.518-1.532 5.864-2.54 7.037-3.03 3.344-1.397 4.04-1.64 4.457-1.815z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>روابط سريعة</h4>
+          <ul class="footer-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#products">المنتجات</a></li>
+            <li><a href="#about" class="about-trigger">من نحن</a></li>
+            <li><a href="#contact" class="contact-trigger">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>المنتجات</h4>
+          <ul class="footer-links">
+            <li><a href="#">FiveM</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Dev Bots</a></li>
+            <li><a href="#">OX Host</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>الدعم</h4>
+          <ul class="footer-links">
+            <li><a href="#">الأسئلة الشائعة</a></li>
+            <li><a href="#">سياسة الاسترجاع</a></li>
+            <li><a href="#">الشروط والأحكام</a></li>
+            <li><a href="#">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 OX STORE. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Contact Modal -->
+  <div class="contact-modal" id="contactModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper">
+      <button class="modal-close-btn" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-3d-container">
+        <div class="modal-header">
+          <h2>تواصل معنا</h2>
+          <p>تابعنا على منصات التواصل الاجتماعي</p>
+        </div>
+
+        <div class="social-cards-3d">
+          <!-- Youtube -->
+          <a href="https://www.youtube.com/@omnex_store" target="_blank" class="social-card youtube">
+            <div class="card-content">
+              <div class="social-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+              </div>
+              <h3>Youtube</h3>
+              <p>شاهد أحدث الفيديوهات والشروحات</p>
+            </div>
+            <div class="card-glow"></div>
+          </a>
+
+          <!-- Discord -->
+          <a href="https://discord.gg/CqzwFyBZt3" target="_blank" class="social-card discord">
+            <div class="card-content">
+              <div class="social-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
+                </svg>
+              </div>
+              <h3>Discord</h3>
+              <p>انضم لمجتمعنا وكن جزءاً من العائلة</p>
+            </div>
+            <div class="card-glow"></div>
+          </a>
+
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/share/19kUmYmu5J/?mibextid=wwXIfr" target="_blank"
+            class="social-card facebook">
+            <div class="card-content">
+              <div class="social-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </div>
+              <h3>Facebook</h3>
+              <p>تابع أخبارنا وتحديثات المنتجات</p>
+            </div>
+            <div class="card-glow"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Modal -->
+  <div class="about-modal" id="aboutModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper">
+      <button class="modal-close-btn" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-3d-container">
+        <div class="modal-header">
+          <h2>من نحن — أومنكس ستور (OMNEX)</h2>
+        </div>
+
+        <div class="about-content-3d">
+          <p>
+            أومنكس ستور هو متجر رقمي متخصص في توفير أفضل المنتجات الإلكترونية والبطاقات والخدمات المتعلقة بالقيمنق،
+            بروحٍ حديثة وجودةٍ عالية تضمن رضا جميع عملائنا. نسعى في OMNEX إلى تقديم تجربة شراء سلسة، آمنة، وسريعة، تُلبي
+            احتياجات اللاعبين والمستخدمين الباحثين عن منتجات موثوقة بأسعار منافسة.
+          </p>
+          <p>
+            نحرص على أن يكون متجرنا بوابتك الأولى للحصول على بطاقات الألعاب، بطاقات الشحن، الحسابات الرقمية، والمنتجات
+            الافتراضية بمختلف أنواعها. ونلتزم بتوفير خدمة عملاء متميزة تعمل على مدار الساعة، لضمان دعمك والإجابة عن
+            استفساراتك في أي وقت.
+          </p>
+          <p>
+            في أومنكس، نؤمن بأن الثقة أساس نجاح أي متجر، ولهذا نعمل باستمرار على تحديث منتجاتنا وتحسين خدماتنا لنقدم
+            تجربة شراء ترتقي لتوقعاتك وتلائم احتياجاتك.
+          </p>
+          <p class="highlight-text">
+            أومنكس ستور — وجهتك المثالية لكل ما يتعلق بالمنتجات الرقمية والقيمنق.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Details Modal -->
+  <div class="product-modal" id="productModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper">
+      <button class="modal-close-btn" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-3d-container product-modal-container">
+        <div class="product-details-content">
+          <div class="product-preview-image">
+            <img id="modalProductImage" src="" alt="Product Image">
+          </div>
+          <div class="product-info-side">
+            <h2 id="modalProductName">اسم المنتج</h2>
+            <div class="product-price-tag" id="modalProductPrice">$0.00</div>
+            <p id="modalProductDescription" class="modal-description"></p>
+
+            <div class="quantity-selector">
+              <label class="qty-label">حدد الكمية</label>
+              <div class="qty-controls-wrapper">
+                <button class="qty-btn" id="modalQtyPlus">+</button>
+                <input type="number" class="qty-input" id="modalQtyInput" value="1" min="1" readonly>
+                <button class="qty-btn" id="modalQtyMinus">-</button>
+              </div>
+            </div>
+
+            <div class="product-actions">
+              <button class="btn-primary btn-large" id="btnBuyNow" style="width: 100%;">
+                <span>الشراء الان</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="checkout-modal" id="checkoutModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper checkout-wrapper">
+      <button class="modal-close-btn" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-3d-container checkout-container">
+
+        <!-- Checkout Steps -->
+        <div class="checkout-steps">
+          <div class="step active">
+            <span class="step-number">1</span>
+            <span class="step-label">Order Information</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <span class="step-label">Confirm & Pay</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <span class="step-label">Receive Items</span>
+          </div>
+        </div>
+
+        <div class="checkout-grid">
+          <!-- Left Column: Order Summary -->
+          <div class="checkout-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-card">
+              <div class="summary-item">
+                <img id="checkoutProductImage" src="" alt="Product">
+                <div class="summary-details">
+                  <h4 id="checkoutProductName">Product Name</h4>
+                  <span class="qty">1x</span>
+                </div>
+                <div class="summary-price" id="checkoutProductPrice">$0.00</div>
+              </div>
+              <div class="summary-total">
+                <span>Total</span>
+                <span id="checkoutTotalPrice">$0.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Payment Form -->
+          <div class="checkout-form">
+
+
+            <div class="form-group">
+              <label>Coupon Code</label>
+              <div class="coupon-input">
+                <input type="text" placeholder="Have a coupon code? Enter it here.">
+                <button class="btn-apply">Apply</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Payment Method *</label>
+              <div class="payment-options">
+
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="balance" checked>
+                  <div class="option-content">
+                    <span>Customer Balance</span>
+                    <span class="balance-icon">$</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="checkout-terms">
+              <label class="checkbox-label">
+                <input type="checkbox" required>
+                <span>I have read and agree to Omnex Store's Terms of Service.</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox">
+                <span>I would like to receive updates and promotions.</span>
+              </label>
+            </div>
+
+            <button class="btn-primary btn-block" id="btnProceedPayment">
+              Proceed to Payment
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-agent-info">
+          <div class="agent-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+            <span class="status-dot"></span>
+          </div>
+          <div class="agent-details">
+            <h3>OX Support</h3>
+            <span class="status-text">We're online!</span>
+          </div>
+        </div>
+        <button class="chat-close-btn" id="closeChat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="chat-body">
+        <div class="chat-message agent">
+          <div class="message-avatar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+          </div>
+          <div class="message-content">
+            <p>👋 السلام عليكم! منور متجرنا.</p>
+            <span class="message-time">الآن</span>
+          </div>
+        </div>
+        <div class="chat-message agent">
+          <div class="message-avatar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+          </div>
+          <div class="message-content">
+            <p>فريقنا جاهز لمساعدتك في أي استفسار.</p>
+            <p>اضغط على الزر تحت عشان تنضم لسيرفر الديسكورد وتتواصل معنا مباشرة!</p>
+            <span class="message-time">الآن</span>
+          </div>
+        </div>
+
+        <a href="https://discord.gg/w6XyUV5hDr" target="_blank" class="chat-discord-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
+          </svg>
+          Join our Support Discord
+        </a>
+      </div>
+
+      <div class="chat-footer-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        Average response time: under 5 minutes
+      </div>
+    </div>
+
+    <button id="chatToggleBtn" class="chat-toggle-btn" aria-label="Open chat">
+      <div class="notification-badge">1</div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Tutorial Modal -->
+  <div class="tutorial-modal" id="tutorialModal" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper" style="max-width: 800px;">
+      <div class="modal-3d-container"
+        style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px;">
+        <div class="modal-header"
+          style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
+          <h3
+            style="font-size: 24px; font-weight: bold; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+            شرح استخدام الموقع</h3>
+          <button class="modal-close-btn" aria-label="Close modal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body" style="color: var(--text-muted); line-height: 1.8;">
+          <div class="tutorial-steps" style="display: grid; gap: 25px;">
+            <div class="step-card"
+              style="background: rgba(var(--text-main-rgb), 0.03); padding: 20px; border-radius: 15px; border-right: 4px solid var(--accent-red);">
+              <h4 style="color: var(--text-main); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                <span
+                  style="background: var(--accent-red); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">1</span>
+                تسجيل الدخول
+              </h4>
+              <p>قم بتسجيل الدخول عبر ديسكورد لتتمكن من إضافة الأموال وشراء المنتجات وحفظ طلباتك.</p>
+            </div>
+            <div class="step-card"
+              style="background: rgba(var(--text-main-rgb), 0.03); padding: 20px; border-radius: 15px; border-right: 4px solid var(--accent-red);">
+              <h4 style="color: var(--text-main); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                <span
+                  style="background: var(--accent-red); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">2</span>
+                إضافة رصيد
+              </h4>
+              <p>اضغط على "إضافة أموال" واختر الوسيلة المناسبة (Binance Pay للشحن التلقائي، أو ليبيانا/مدار للشحن
+                اليدوي).</p>
+            </div>
+            <div class="step-card"
+              style="background: rgba(var(--text-main-rgb), 0.03); padding: 20px; border-radius: 15px; border-right: 4px solid var(--accent-red);">
+              <h4 style="color: var(--text-main); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                <span
+                  style="background: var(--accent-red); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">3</span>
+                شراء المنتج
+              </h4>
+              <p>بعد شحن الرصيد، اختر المنتج الذي تريده واضغط "شراء الآن" وسيتم خصم المبلغ من رصيدك وتسليمك المنتج فوراً
+                أو التواصل معك.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Funds Modal -->
+  <div class="add-funds-modal" id="addFundsModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper funds-wrapper">
+      <!-- Close Button positioned Absolute Top-Left -->
+      <button class="modal-close-btn" aria-label="Close modal"
+        style="position: absolute; top: 20px; left: 20px; z-index: 10;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-3d-container funds-container"
+        style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; max-width: 500px;">
+        <div class="funds-header"
+          style="text-align: center; padding: 20px; border-bottom: 1px solid var(--border-color);">
+          <h3
+            style="font-size: 24px; font-weight: bold; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+            إضافة أموال</h3>
+          <div class="custom-select-wrapper" style="margin-top: 15px;">
+            <select class="funds-select" id="paymentMethodSelect"
+              style="width: 100%; padding: 12px; background: rgba(var(--text-main-rgb), 0.05); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 10px;">
+              <option value="libyana">شحن ( ليبيانا + مدار )</option>
+              <option value="lp">Binance</option>
+
+            </select>
+          </div>
+        </div>
+
+        <div class="funds-body" style="padding: 20px;">
+
+          <!-- Libyana/Madar Content -->
+          <div id="libyanaContent">
+            <h4 class="instructions-title" style="color: var(--text-muted); margin-bottom: 15px;">التعليمات</h4>
+
+            <div class="logos-container"
+              style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px;">
+              <div class="logo-box"
+                style="width: 60px; height: 60px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-color);">
+                <img src="https://r2.fivemanage.com/2KfimCGtqFkmxL9fil5gb/images(4).jpg" alt="Libyana"
+                  style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="logo-box"
+                style="width: 60px; height: 60px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-color);">
+                <img
+                  src="https://r2.fivemanage.com/2KfimCGtqFkmxL9fil5gb/E40C15D6-795B-461E-A172-211866672332-500x500.jpeg"
+                  alt="Madar" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+            </div>
+
+            <div class="exchange-info"
+              style="background: rgba(220, 38, 38, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+              <p style="color: var(--text-main); font-weight: bold;">سعر الايداع اليوم</p>
+              <p class="rate-text" style="color: var(--accent-red); margin-top: 5px;">( الـ 1 دولار = 13.00 رصيد )</p>
+            </div>
+
+            <div class="wallet-numbers" style="margin-bottom: 20px;">
+              <p style="margin-bottom: 10px; color: var(--text-muted);">أرقام المحافظ الخاصة بنا:</p>
+
+              <!-- Added onclick to copy number -->
+              <div class="number-box" onclick="copyToClipboard('0934070146')"
+                style="display: flex; justify-content: space-between; background: rgba(var(--text-main-rgb), 0.05); padding: 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: background 0.3s; color: var(--text-main);">
+                <span class="phone-number">0934070146</span>
+                <span class="copy-icon">📋</span>
+              </div>
+
+              <div class="number-box" onclick="copyToClipboard('0942929577')"
+                style="display: flex; justify-content: space-between; background: rgba(var(--text-main-rgb), 0.05); padding: 10px; border-radius: 8px; cursor: pointer; transition: background 0.3s; color: var(--text-main);">
+                <span class="phone-number">0942929577</span>
+                <span class="copy-icon">📋</span>
+              </div>
+            </div>
+
+            <script>
+              function copyToClipboard(text) {
+                navigator.clipboard.writeText(text).then(() => {
+                  // Use the custom Box (Status Modal) instead of alert
+                  showStatus('تم النسخ', 'تم نسخ الرقم بنجاح: ' + text, 'success');
+                }).catch(err => {
+                  console.error('Failed to copy: ', err);
+                  showStatus('خطأ', 'فشل نسخ الرقم', 'error');
+                });
+              }
+            </script>
+
+            <div class="funds-form" style="display: flex; flex-direction: column; gap: 15px;">
+              <div class="input-group">
+                <label style="display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 14px;">الرقم الذي
+                  حولت منه</label>
+                <input type="text" id="inputSenderNumber" placeholder="0915986541"
+                  style="width: 100%; padding: 12px; background: rgba(var(--text-main-rgb), 0.05); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px;">
+              </div>
+              <div class="input-group">
+                <label style="display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 14px;">المبلغ
+                  المرسل (بالدينار)</label>
+                <input type="number" id="inputSentAmount" placeholder="مثال: 65"
+                  style="width: 100%; padding: 12px; background: rgba(var(--text-main-rgb), 0.05); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px;">
+              </div>
+              <button class="btn-primary" id="btnConfirmLocalPayment"
+                style="width: 100%; justify-content: center; padding: 15px;">تأكيد
+                الدفع</button>
+            </div>
+          </div>
+
+          <!-- Binance Content -->
+          <div id="lpContent" style="display: none;">
+            <!-- Step 0: Setup & Amount -->
+            <div id="lpStep0" class="lp-view">
+              <div class="lp-id-section"
+                style="text-align: center; margin-bottom: 25px; background: rgba(var(--text-main-rgb), 0.03); padding: 15px; border-radius: 12px; border: 1px solid var(--border-color);">
+                <div class="id-label-modern" style="color: var(--text-main); font-weight: bold; margin-bottom: 10px;">قم
+                  بالتحويل إلى Binance ID التالي:</div>
+                <div class="id-display-box" onclick="copyToClipboard('886159354')"
+                  style="display: flex; gap: 10px; justify-content: center; font-size: 24px; font-weight: bold; color: var(--accent-red); background: rgba(var(--text-main-rgb), 0.05); padding: 12px; border-radius: 10px; border: 1px dashed var(--accent-red); cursor: pointer;">
+                  886159354
+                  <span style="font-size: 16px;">📋</span>
+                </div>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 12px;">انقر على الرقم لنسخه</p>
+              </div>
+
+              <div class="funds-form" style="margin-top: 10px;">
+                <div class="input-group" style="margin-bottom: 20px;">
+                  <label style="display: block; margin-bottom: 8px; color: var(--text-main); font-weight: bold;">المبلغ
+                    المراد شحنه ($)</label>
+                  <input type="number" id="lpAmountInput" placeholder="0.00"
+                    style="width: 100%; padding: 14px; background: rgba(var(--text-main-rgb), 0.05); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 10px; font-size: 16px; text-align: center;">
+                </div>
+                <button type="button" class="btn-primary" id="btnNextLP"
+                  style="width: 100%; justify-content: center; padding: 14px; font-size: 16px;">لقد قمت بالتحويل،
+                  التالي</button>
+              </div>
+            </div>
+
+            <!-- lpStep1 Removed -->
+
+
+            <!-- Step 2: Order ID Verification -->
+            <div id="lpStep2" class="lp-view" style="display: none; margin-top: 10px;">
+              <div class="verification-section-modern" style="margin-bottom: 20px;">
+                <label class="input-label-modern"
+                  style="display: block; text-align: right; margin-bottom: 15px; color: var(--text-main); font-weight: bold;">أدخل
+                  رقم الطلب (Order ID)</label>
+                <input type="text" id="lpOrderIdInput" placeholder="أدخل 18 رقم الخاصة بالعملية..." maxlength="18"
+                  style="width: 100%; padding: 14px; background: rgba(var(--text-main-rgb), 0.05); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 10px; font-size: 16px; text-align: center;">
+
+                <div
+                  style="margin-top: 20px; background: rgba(var(--text-main-rgb), 0.03); padding: 15px; border-radius: 10px; border-right: 3px solid var(--accent-red);">
+                  <p style="font-size: 13px; color: var(--text-muted); text-align: right;">
+                    <strong>ملاحظة:</strong> تجد رقم الطلب في تفاصيل العملية داخل تطبيق Binance (يسمى <b>Order ID</b>
+                    وهو مكون من 18 رقم).
+                  </p>
+                </div>
+              </div>
+              <button type="button" class="btn-primary" id="btnVerifyLPFinal"
+                style="width: 100%; justify-content: center; padding: 16px;">تأكيد وشحن الرصيد فوراً</button>
+            </div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Custom Confirmation Modal -->
+  <div class="confirmation-modal" id="orderConfirmModal" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper" style="max-width: 450px;">
+      <div class="modal-3d-container"
+        style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px;">
+        <div style="text-align: center; margin-bottom: 25px;">
+          <div
+            style="width: 60px; height: 60px; background: rgba(220, 38, 38, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+            <span style="font-size: 30px;">🛡️</span>
+          </div>
+          <h3 style="font-size: 22px; font-weight: bold; color: var(--text-main);">هل أنت متأكد من البيانات؟</h3>
+        </div>
+
+        <div id="confirmOrderDetails"
+          style="background: rgba(var(--text-main-rgb), 0.03); border-radius: 12px; padding: 20px; margin-bottom: 25px; line-height: 1.8; color: var(--text-muted);">
+          <!-- Content injected via JS -->
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <button class="btn-primary" id="finalConfirmBtn"
+            style="justify-content: center; background: var(--accent-red);">تأكيد الدفع</button>
+          <button class="btn-secondary" id="cancelConfirmBtn"
+            style="justify-content: center; border: 1px solid var(--border-color);">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Status/Alert Modal -->
+  <div class="status-modal" id="statusModal" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper" style="max-width: 400px;">
+      <div class="modal-3d-container"
+        style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px; text-align: center;">
+        <div id="statusIcon"
+          style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+          <!-- Icon injected by JS -->
+        </div>
+        <h3 id="statusTitle" style="font-size: 20px; font-weight: bold; color: var(--text-main); margin-bottom: 10px;">
+          رسالة</h3>
+        <p id="statusMessage"
+          style="color: var(--text-muted); line-height: 1.6; margin-bottom: 25px; white-space: pre-wrap;"></p>
+
+        <!-- Order Number Display -->
+        <div id="orderNumberArea" style="display: none; margin-bottom: 20px;">
+          <div style="background: rgba(220, 38, 38, 0.1); border: 1px dashed var(--accent-red); border-radius: 10px; padding: 15px;">
+            <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 5px;">رقم الطلبية</p>
+            <p id="orderNumberDisplay" style="color: var(--accent-red); font-size: 18px; font-weight: bold; font-family: monospace; letter-spacing: 2px;"></p>
+          </div>
+        </div>
+
+        <!-- Customer Area Button -->
+        <button id="btnCustomerArea" class="btn-primary" onclick="openCustomerArea()"
+          style="width: 100%; justify-content: center; margin-bottom: 12px; display: none;">
+          <span>منطقة العميل</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <!-- Styled Delivery Area -->
+        <div id="deliveryArea" style="display: none; margin-bottom: 25px;">
+          <div
+            style="background: rgba(0,0,0,0.3); border: 1px dashed var(--border-color); border-radius: 10px; padding: 15px; position: relative;">
+            <pre id="deliveryContent"
+              style="margin: 0; color: #4ade80; font-family: monospace; font-size: 14px; text-align: left; direction: ltr; white-space: pre-wrap; word-break: break-all;"></pre>
+            <button onclick="copyDelivery()"
+              style="position: absolute; top: 5px; right: 5px; background: var(--accent-red); color: white; border: none; border-radius: 4px; padding: 4px 8px; font-size: 11px; cursor: pointer;">نسخ</button>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="closeModal(document.getElementById('statusModal'))"
+          style="width: 100%; justify-content: center;">حسناً</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Confirm Modal -->
+  <div class="status-modal" id="customConfirmModal" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper" style="max-width: 400px;">
+      <div class="modal-3d-container"
+        style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px; text-align: center;">
+        <div
+          style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.2);">
+          <span style="font-size: 30px;">❓</span>
+        </div>
+        <h3 id="confirmTitle" style="font-size: 20px; font-weight: bold; color: var(--text-main); margin-bottom: 10px;">
+          تأكيد</h3>
+        <p id="confirmMessage" style="color: var(--text-muted); line-height: 1.6; margin-bottom: 25px;"></p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <button class="btn-primary" id="btnConfirmAction"
+            style="justify-content: center; background: var(--accent-red);">تأكيد</button>
+          <button class="btn-secondary" id="btnCancelAction"
+            style="justify-content: center; border: 1px solid var(--border-color);">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer Dashboard Modal Removed (Moved to dashboard.html) -->
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h3>السلة</h3>
+        <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="cart-body" id="cartBody">
+        <div class="cart-empty" id="cartEmpty">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <p>السلة فارغة</p>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+      </div>
+      <div class="cart-footer" id="cartFooter" style="display: none;">
+        <div class="cart-summary">
+          <div class="cart-summary-row">
+            <span>المنتجات</span>
+            <span id="cartItemsCount">0</span>
+          </div>
+          <div class="cart-summary-row total">
+            <span>المجموع</span>
+            <span id="cartTotal">$0.00</span>
+          </div>
+        </div>
+        <button class="btn-primary btn-block" id="cartCheckoutBtn">
+          <span>إتمام الشراء</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <button class="btn-clear-cart" id="clearCartBtn">إفراغ السلة</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard Modal -->
+  <div class="modal" id="adminDashboardModal" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-wrapper">
+      <div class="modal-content admin-modal">
+        <div class="modal-header">
+          <h3>لوحة التحكم</h3>
+          <button class="modal-close" id="closeAdminModal">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="orders-list" id="adminOrdersList">
+            <!-- Orders will be loaded here -->
+            <p class="no-orders">لا توجد طلبات معلقة</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    // Payment Logic
+    document.getElementById('btnConfirmLocalPayment').addEventListener('click', async () => {
+      const senderNumber = document.getElementById('inputSenderNumber').value.trim();
+      const amount = document.getElementById('inputSentAmount').value.trim();
+      const user = getStoredUser();
+
+      if (!user) {
+        showStatus('تنبيه', 'يجب عليك تسجيل الدخول أولاً', 'error');
+        return;
+      }
+
+      if (!senderNumber || !amount) {
+        showStatus('خطأ', 'الرجاء تعبئة جميع الحقول', 'error');
+        return;
+      }
+
+      // Logic for detecting carrier and target wallet
+      let targetWallet = '';
+      let carrier = '';
+
+      const isNineDigits = /^[9][1-4]\d{7}$/.test(senderNumber);
+      const isTenDigits = /^[0][9][1-4]\d{7}$/.test(senderNumber);
+
+      if (!isNineDigits && !isTenDigits) {
+        showStatus('خطأ', 'الرقم المدخل غير صحيح. يجب أن يتكون من 9 أرقام (تبدأ بـ 9) أو 10 أرقام (تبدأ بـ 09)', 'error');
+        return;
+      }
+
+      if (senderNumber.includes('91') || senderNumber.includes('93')) {
+        targetWallet = '0934070146 (Almadar)';
+        carrier = 'almadar';
+      } else if (senderNumber.includes('92') || senderNumber.includes('94')) {
+        targetWallet = '0942929577 (Libyana)';
+        carrier = 'libyana';
+      } else {
+        showStatus('خطأ', 'الرقم غير مدعوم', 'error');
+        return;
+      }
+
+      // Calculate USD amount (Using Dynamic Exchange Rate)
+      const currentRate = window.exchangeRate || 13.0;
+      const usdAmount = (parseFloat(amount) / currentRate).toFixed(2);
+
+      // --- Custom Confirmation Modal Logic ---
+      const confirmModal = document.getElementById('orderConfirmModal');
+      const detailsContainer = document.getElementById('confirmOrderDetails');
+      const finalBtn = document.getElementById('finalConfirmBtn');
+      const cancelBtn = document.getElementById('cancelConfirmBtn');
+
+      detailsContainer.innerHTML = `
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span>رقمك:</span> <strong style="color: white;">${senderNumber}</strong></div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span>المبلغ:</span> <strong style="color: white;">${amount} د.ل</strong></div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><span>المبلغ بالدولار:</span> <strong style="color: var(--accent-red);">$${usdAmount}</strong></div>
+          <div style="display: flex; justify-content: space-between;"><span>المحفظة المستلمة:</span> <strong style="color: white;">${targetWallet}</strong></div>
+        `;
+
+      openModal(confirmModal);
+
+      // Handle Cancel
+      const closeConfirm = () => closeModal(confirmModal);
+      cancelBtn.onclick = closeConfirm;
+      confirmModal.querySelector('.modal-backdrop').onclick = closeConfirm;
+
+      // Handle Final Confirm
+      finalBtn.onclick = async () => {
+        closeConfirm();
+        try {
+          // Send Order to Backend
+          const res = await fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              userId: user.id,
+              username: user.username,
+              amount: usdAmount, // Storing in USD
+              localAmount: amount,
+              senderNumber: senderNumber,
+              carrier: carrier,
+              status: 'pending'
+            })
+          });
+
+          if (res.ok) {
+            closeModal(document.getElementById('addFundsModal'));
+            setTimeout(() => {
+              showStatus('نجاح', 'تم إرسال طلبك بنجاح! سيتم مراجعة الطلب وإضافة الرصيد في أقرب وقت.', 'success');
+            }, 400);
+          } else {
+            const err = await res.json();
+            showStatus('خطأ', err.error || 'فشل الإرسال', 'error');
+          }
+        } catch (error) {
+          console.error(error);
+          showStatus('خطأ', 'حدث خطأ في الاتصال', 'error');
+        }
+      };
+    });
+  </script>
+
+
+  <script src="script.js"></script>
+  <script src="discord-auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+  <script>
+    // Custom Cursor Logic with Smoothing (Lerp)
+    const cursor = document.querySelector('.custom-cursor');
+    let mouseX = 0, mouseY = 0; // Actual mouse position
+    let cursorX = 0, cursorY = 0; // Damped cursor position
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Function to update cursor position smoothly
+    function animateCursor() {
+      // Lerp formula: current + (target - current) * factor
+      // This creates the "delay" effect
+      const smoothingFactor = 0.15;
+      cursorX += (mouseX - cursorX) * smoothingFactor;
+      cursorY += (mouseY - cursorY) * smoothingFactor;
+
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.addEventListener('mousedown', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(0.6)';
+    });
+
+    document.addEventListener('mouseup', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+
+    // Hover effect for interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .product-card, .filter-btn, .number-box, select, input');
+
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
