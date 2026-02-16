@@ -53,6 +53,11 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '.'))); // Serve static files
 app.use('/uploads', express.static(uploadsDir)); // Serve uploaded images
 
+// Handle auth-callback.html route
+app.get('/auth-callback.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'auth-callback.html'));
+});
+
 
 // Health Check & Debug Info
 app.get('/api/health', (req, res) => {
