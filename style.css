@@ -1239,9 +1239,19 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
 
-    .nav-links,
-    .nav-buttons {
+    .nav-links {
         display: none;
+    }
+
+    .nav-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+    .nav-buttons .btn-primary {
+        padding: 6px 12px;
+        font-size: 11px;
+        white-space: nowrap;
     }
 
     .mobile-menu-toggle {
