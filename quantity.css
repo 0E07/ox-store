@@ -1,0 +1,65 @@
+/* Quantity Selector Styles */
+.quantity-selector {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.qty-label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.qty-controls-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(var(--bg-card-rgb), 0.5);
+    /* Assuming var exists, fallback below */
+    background: #0f111a;
+    border-radius: 8px;
+    padding: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.qty-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-main);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.qty-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+.qty-input {
+    flex: 1;
+    height: 40px;
+    background: transparent;
+    border: none;
+    text-align: center;
+    color: var(--text-main);
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    /* Remove arrows */
+    -moz-appearance: textfield;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
